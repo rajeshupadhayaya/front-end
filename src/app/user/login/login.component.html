@@ -1,3 +1,26 @@
-<p>
-  login works!
-</p>
+<div *ngIf="isLoginError" class="red-text center error-message">
+  <i class="material-icons">error</i> Incorrect Username/Password
+</div>
+
+<form class="col s12 white" #loginForm="ngForm" (ngSubmit)="OnSubmit(email.value, password.value)">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input placeholder="Email" id="email" #email="ngModel" [(ngModel)]="user.email" name="email" type="email" required class="validate">
+        <label data-error="Email Required" for="email">Email</label>
+      </div>
+      
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+        <input id="password" type="password" #password="ngModel" [(ngModel)]="user.password" required class="validate" name="password">
+        <label data-error="Password Required" for="password">Password</label>
+      </div>
+    </div>
+    <div class="row">
+        <button [disabled]="!loginForm.valid" class="waves-effect waves-light blue btn-large" type="submit"> Login </button>
+    </div>
+  </form>
+      

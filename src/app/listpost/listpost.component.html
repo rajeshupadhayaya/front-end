@@ -1,0 +1,32 @@
+<div *ngIf="isLoading" class="loading-img"></div>
+<div class="row">
+    <div class="input-field col s10">  
+      <i class="material-icons prefix">search</i>
+      <input type="text" name="search" id="search" class="autocomplete" [(ngModel)]="filter">
+      <label for="search">Search Job</label>
+    </div>
+</div>
+
+<div *ngFor = "let l of data | filter:filter | paginate: { itemsPerPage: 3, currentPage: p }; ">
+  <div class="row">
+      <div class="col s12 m12">
+          
+        <div class="card horizontal">
+          
+          <div class="card-stacked">
+            <div class="card-content">
+                <h5>
+                    {{l.title}}
+                </h5>
+                <div [innerHTML]="l.description"></div>
+              <!-- {{l.description}} -->
+            </div>
+            <div class="card-action">
+              <a href="#">Contact Employer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

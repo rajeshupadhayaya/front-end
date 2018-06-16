@@ -1,0 +1,24 @@
+<div *ngIf = "isSignupError" class="alert">
+  Email id not valid
+</div>
+
+<form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(email.value, password.value)">
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Email" id="email" #email="ngModel" [(ngModel)]="user.email" type="email" required class="validate" [pattern]="emailPattern" name="email">
+        <label [attr.data-error]="email.error!=null?(Email.error.required?'Email Required':'Invalid Email Id'):true" for="email">Email</label>
+      </div>
+      
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" #password="ngModel" [(ngModel)]="user.password" required class="validate" minlength="4" name="password">
+        <label [attr.data-error]="password.error!=null?(Password.error.required?'Password Required':'Minimum 4 characters required'):true" for="password">New Password</label>
+      </div>
+    </div>
+    <div class="row">
+        <button [disabled]="!userRegistrationForm.valid" class="waves-effect blue waves-light btn-large" type="submit"> Register </button>
+    </div>
+  </form>
+      

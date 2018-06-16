@@ -1,1 +1,175 @@
 /* You can add global styles to this file, and also import other style files */
+a{
+	color:black;
+	cursor: pointer;
+}
+
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+
+.loading-img {
+	position: absolute;
+	background: url("/assets/images/loading.gif") no-repeat center;
+    margin: auto;
+    left: 0; 
+    right: 0;
+    top: 0;
+    bottom: 0; 
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.background-image{
+	background: url('assets/images/main-body.jfif') no-repeat fixed;
+	background-size: cover;
+	display: block;
+	filter: blur(5px);
+	-webkit-filter: blur(5px);
+	height: 800px;
+	left: 0;
+	position: fixed;
+	right: 0;
+	z-index: 0;
+}
+
+/* .navigation-bar .banner {
+	font-size: xx-large;
+}
+.navigation-bar .banner a:hover{
+	background: none;
+	color:green;
+}
+.navigation-bar > li > a {
+	color: black;
+}
+
+.navigation-bar .login-btn{
+	float: right;
+	cursor: pointer;
+	font-size: x-large;
+	margin-right: 40px;
+	border-style: solid;
+	border-width: 1.5px;
+	border-radius: 5px;
+
+}
+
+.index_content{
+	background: rgba(255, 255, 255, 0.35);
+	border-radius: 3px;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	margin: 5% 5%;
+	position: relative;
+	display: block;
+	z-index: 2;
+	padding: 2%;
+	max-height: 100%;
+}
+
+.navigation-bar .login-btn a:hover {
+	background-color: green;
+	color: white;
+}
+
+.container{
+	margin: 0 10% 0 10%;
+} */
+.clear:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.movieItem{
+	width: 29%;
+	float: left;
+	margin-right: 2%;
+	height: 400px;
+	text-align: center;
+	cursor: pointer;
+	background-size: auto 100%!important;
+	position: relative;
+	
+}
+
+button.btn-submit:focus,button.btn-submit:hover{
+	background-color: #38547b;
+}
+
+button.btn-submit{
+	background-color: #38547b;
+	color:#fff;
+	width: 100%;
+}
+
+/* input.ng-invalid.ng-dirty{
+	border-bottom-color: #e91e63 !important;
+	box-shadow: 0 1px 0 0 #e91e63 !important;
+}
+ */
+.movieName{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: rgba(0,0,0,0.76);
+	text-align: center;
+	color: white;
+	padding: 10px 0;
+
+}
+
+.navbar-form .form-control {
+    width: 100%;
+}
+/*
+.locate-me{
+	color: green;
+	cursor: pointer;
+
+}*/
+
+.add-on .input-group-btn > .btn {
+	border-left-width:0;left:-2px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* stop the glowing blue shadow */
+.add-on .form-control:focus {
+	box-shadow:none;
+	-webkit-box-shadow:none; 
+	border-color:#cccccc; 
+}
+
+.footer{
+	z-index: 2;
+    bottom: 0;
+    position: fixed;
+    display: block;
+    text-align: center;
+    background: rgba(0,0,0, 0.7);
+    color: white;
+    width: 100%;
+    font-size: x-small;
+}
+
+.ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin: 20px 0;
+}

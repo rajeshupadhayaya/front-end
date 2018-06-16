@@ -1,0 +1,15 @@
+<div>
+  <h2 md-dialog-title>Thank You</h2>
+  <hr>
+  <mat-dialog-content>
+    {{title}}
+    <br>
+    <br>
+    <strong>{{message}}</strong>
+  </mat-dialog-content>
+  <hr>
+  <mat-dialog-actions>
+    <button md-raised-button class="waves-effect waves-light green btn" (click)="onCloseConfirm()">CONFIRM</button>&nbsp;
+    <button md-raised-button class="waves-effect waves-light red btn" (click)="onCloseCancel()">CANCEL</button>
+  </mat-dialog-actions>
+</div>
