@@ -5,7 +5,7 @@ import { UserService } from '../../shared/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Globals } from '../../shared/global';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import {ToasterService} from 'angular2-toaster';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +16,15 @@ export class LoginComponent implements OnInit {
   user = User;
   isLoginError : boolean = false;
   returnUrl : string;
+  
   constructor(
     private userService : UserService,
     private router : Router,
     private route: ActivatedRoute,
     private global: Globals,
-    public toastr: ToastsManager, 
-    vcr: ViewContainerRef
+    private toasterService: ToasterService
   ) { 
-    this.toastr.setRootViewContainerRef(vcr);
+    this.toasterService = toasterService;
   }
 
   ngOnInit() {
@@ -35,12 +35,12 @@ export class LoginComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Logged In', 'Success!');
+    this.toasterService.pop('success', 'Logged In', 'Ready To Go!!');
   }
 
-  showError() {
-    this.toastr.error('Login Failed!', 'Oops!');
-  }
+  // showError() {
+  //   this.toastr.error('Login Failed!', 'Oops!');
+  // }
 
   OnSubmit(email,password){
     this.userService.userAuthentication(email,password).subscribe((data : any)=>{
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     },
   (err: HttpErrorResponse)=>{
     this.isLoginError = true;
-    this.showError();
+    // this.showError();
   })
   }
 

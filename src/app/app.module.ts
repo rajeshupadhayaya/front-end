@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { RoutesModule } from './routes.module';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
-// import { LogoutComponent } from './user/logout/logout.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { UserService } from './shared/user.service';
@@ -22,7 +21,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import {MatDialogModule} from "@angular/material";
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {ToasterModule, ToasterService} from 'angular2-toaster';
 
 @NgModule({
   declarations: [
@@ -46,10 +45,10 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
     AngularEditorModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    ToastModule.forRoot()
+    ToasterModule.forRoot()
     
   ],
-  providers: [UserService,AuthGuard,Globals],
+  providers: [UserService,AuthGuard,Globals, ToasterService],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })

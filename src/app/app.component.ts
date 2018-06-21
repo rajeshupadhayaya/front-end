@@ -2,7 +2,7 @@ import { Component, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './shared/user.service';
 import { Globals } from './shared/global';
-import { ToastsManager } from 'ng2-toastr';
+import {ToasterService} from 'angular2-toaster';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,13 +17,12 @@ export class AppComponent {
     private userService : UserService,
     private router: Router,
     private global: Globals,
-    public toastr: ToastsManager, 
-    vcr: ViewContainerRef
+    private toasterService: ToasterService
   )
   {
-    this.toastr.setRootViewContainerRef(vcr);
     
-
+    
+    this.toasterService = toasterService;
   }
   ngOnInit() {
 
@@ -34,7 +33,7 @@ export class AppComponent {
   }
 
   showSuccess() {
-    this.toastr.success('Logged Out', 'Success!');
+    this.toasterService.pop('success', 'Logged Out!!', 'Login again');
   }
 
   Logout(){
