@@ -32,8 +32,10 @@ export class CreatepostComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.position = {
-      top: '0',
-      left: '0'
+      top: '',
+      left: '',
+      bottom: '',
+      right: ''
   };
     dialogConfig.data = {
         title: header,
@@ -59,7 +61,7 @@ export class CreatepostComponent implements OnInit {
     this.userService.createPost(title,desc).subscribe((data : any)=>{
       // this.message = data.success;
       var header = 'Your Job Has Been Posted!!';
-      var msg = 'We have received your job, Your job will be visible to public after verification. You will also receive a mail for your job post approval/rejection. It may take 1-2 hour, Please be patience.';
+      var msg = 'We have received your job, Your job will be visible to public after verification.</br> You will also receive a mail for your job post approval/rejection. </br>It may take 1-2 hour, Please be patience.';
       this.openDialog(header,msg);
     },
   (err: HttpErrorResponse)=>{

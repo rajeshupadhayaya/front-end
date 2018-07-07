@@ -4,7 +4,7 @@
         
         <div class="nav-wrapper container">
           
-          <a href="#" class="brand-logo">AVBIZ</a>
+          <a routerLink="/" class="brand-logo">AVBIZ</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul *ngIf="!global.userLogin" class="hide-on-med-and-down right">
             <!-- <li><a routerLink="/home">Home</a></li> -->
@@ -30,7 +30,13 @@
 
 <ul class="sidenav" id="mobile-demo">
   <!-- <li><a routerLink="/">home</a></li> -->
-  <li><a routerLink='/login'>Login/Register</a></li>
+  <li *ngIf="!global.userLogin"><a routerLink='/login'>Login/Register</a></li>
+  <li *ngIf="global.userLogin">
+      <a class="dropdown-trigger" data-target='dropdown1'><i class="material-icons md-48 md-light">account_circle</i></a>
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a (click)="Logout()">Logout</a></li>
+    </ul>
+  </li>
   
 </ul>
 
