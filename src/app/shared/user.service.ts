@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Response } from '@angular/http';
-import { Observable } from 'rxjs';
+// import { Response } from '@angular/http';
+// import { Observable } from 'rxjs';
 // import 'rxjs/add/operator/map';
 import { User } from './user.model';
+import { Globals } from './global';
 
 @Injectable()
 export class UserService {
-    readonly rootUrl = 'http://localhost:8000';
+    // readonly rootUrl = 'http://localhost:8000';
 
-    constructor(private http: HttpClient){ };
+    constructor(
+        private http: HttpClient,
+        private global: Globals,
+    ){ };
 
     registerUser(user : User){
         const body: User = {
@@ -18,7 +22,7 @@ export class UserService {
             
         }
 
-        return this.http.post(this.rootUrl + '/api/register', body);
+        return this.http.post(this.global.rootUrl + '/api/register', body);
     }
 
     userAuthentication(email,password){
@@ -26,21 +30,21 @@ export class UserService {
             'email' : email,
             'password': password
         }
-        return this.http.post(this.rootUrl+'/api/login',data);
+        return this.http.post(this.global.rootUrl+'/api/login',data);
     }
 
     userLogout(){
-        return this.http.post(this.rootUrl+'api/logout',
+        return this.http.post(this.global.rootUrl+'api/logout',
         {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
     }
 
     getAllPost(){
-        return this.http.get(this.rootUrl+'/api/getpost');
+        return this.http.get(this.global.rootUrl+'/api/getpost');
     }
 
     getUserInfo(post){
         var data ='id='+post;
-        return this.http.post(this.rootUrl+'api/postdetails',data,
+        return this.http.post(this.global.rootUrl+'api/postdetails',data,
     {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
     }
     
@@ -49,7 +53,7 @@ export class UserService {
             'title' : title,
             'description': desc
         }
-        return this.http.post(this.rootUrl+'/api/createpost',data,
+        return this.http.post(this.global.rootUrl+'/api/createpost',data,
         {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
     }
 }

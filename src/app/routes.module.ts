@@ -1,28 +1,65 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
-import { LoginComponent } from './user/login/login.component';
-import { SignupComponent } from './user/signup/signup.component';
-import { AuthGuard } from './auth/auth.guard';
-import { ListpostComponent } from './listpost/listpost.component';
-import { CreatepostComponent } from './createpost/createpost.component';
-import { ViewdetailComponent } from './viewdetail/viewdetail.component';
+import { HomeComponent } from './public/home/home.component';
+import { UserComponent } from './public/user/user.component';
+import { LoginComponent } from './public/user/login/login.component';
+import { SignupComponent } from './public/user/signup/signup.component';
+import { AuthGuard } from './public/auth/auth.guard';
+import { ListpostComponent } from './public/listpost/listpost.component';
+import { CreatepostComponent } from './public/createpost/createpost.component';
+import { ViewdetailComponent } from './public/viewdetail/viewdetail.component';
+import { AdminComponent } from './admin/admin.component';
+import { ViewrequestComponent } from './admin/viewrequest/viewrequest.component';
+import { NewpostComponent } from './admin/newpost/newpost.component';
+import { PublicComponent } from './public/public.component';
+import { AdminauthGuard } from './admin/auth/adminauth.guard';
+
 
 const routes: Routes = [
-	{ path: '', component: HomeComponent },
+	{ path: '', component: PublicComponent,
+		children: [{path: '', component: HomeComponent}]
+	 },
 	{ 
-		path: 'login', component: UserComponent,
-		children: [{path: '', component: LoginComponent}] 
+		path: 'login', component: PublicComponent,
+		children: [{path: '', component: UserComponent, 
+		children: [{path: '', component: LoginComponent}]}] 
 	},
 	{ 
-		path: 'signup', component: UserComponent,
-		children: [{path: '', component: SignupComponent}] 
+		path: 'signup', component: PublicComponent,
+		children: [{path: '', component: UserComponent, 
+		children: [{path: '', component: LoginComponent}]}] 
 	},
-	{ path: 'post', component: CreatepostComponent , canActivate:[AuthGuard] },
+	{ 
+		path: 'post', component: PublicComponent , 
+		children: [{path: '', component: CreatepostComponent}],
+		canActivate:[AuthGuard] },
 	// { path: 'post', component: CreatepostComponent },
-	{ path: 'viewall', component: ListpostComponent },
-	{ path: 'viewdetail', component: ViewdetailComponent, canActivate:[AuthGuard] }
+	{ 
+		path: 'viewall', component: PublicComponent,
+		children: [{path: '', component: ListpostComponent}] 
+	},
+	{ 
+		path: 'viewdetail', component: PublicComponent, 
+		children: [{path: '', component: ViewdetailComponent}],
+		canActivate:[AuthGuard] 
+	},
+	
+	//admin route
+	{ 
+		path: 'admin', component: AdminComponent
+		
+	},
+
+	{ 
+		path: 'viewrequest', component: AdminComponent
+		,children: [{path: '', component: ViewrequestComponent}]
+		// ,canActivate: [AdminauthGuard]
+	},
+	{ 
+		path: 'newpost', component: AdminComponent,
+		children: [{path: '', component: NewpostComponent}] 
+		// ,canActivate: [AdminauthGuard]
+	}
 	// { path: 'viewdetail', component: ViewdetailComponent }
 
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' }

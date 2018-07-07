@@ -1,5 +1,5 @@
 <div>
-  <h2 md-dialog-title>Thank You</h2>
+  <h4 md-dialog-title>{{header}}</h4>
   <hr>
   <mat-dialog-content>
     {{title}}
@@ -9,7 +9,7 @@
   </mat-dialog-content>
   <hr>
   <mat-dialog-actions>
-    <button md-raised-button class="waves-effect waves-light green btn" (click)="onCloseConfirm()">CONFIRM</button>&nbsp;
-    <button md-raised-button class="waves-effect waves-light red btn" (click)="onCloseCancel()">CANCEL</button>
+    <button md-raised-button class="waves-effect waves-light green btn" (click)="onCloseConfirm()">{{ok}}</button>&nbsp;
+    <button md-raised-button class="waves-effect waves-light red btn" (click)="onCloseCancel()">{{cancel}}</button>
   </mat-dialog-actions>
 </div>

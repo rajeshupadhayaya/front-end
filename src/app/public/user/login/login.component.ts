@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from '../../shared/user.model';
-import { UserService } from '../../shared/user.service';
+import { User } from '../../../shared/user.model';
+import { UserService } from '../../../shared/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Globals } from '../../shared/global';
+import { Globals } from '../../../shared/global';
 import {ToasterService} from 'angular2-toaster';
 
 @Component({

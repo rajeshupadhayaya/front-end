@@ -1,0 +1,37 @@
+<div class="admin-content">
+  <table class="highlight">
+    <thead>
+      <tr>
+          <th>
+              S.No
+          </th>
+          <th>
+              User Email
+          </th>
+          <th>
+              Post Title
+          </th>
+        <th>
+            Action
+        </th>    
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let l of data | filter:filter | paginate: { itemsPerPage: 10, currentPage: p }; let i=index;" >
+        <td>
+            {{ i + 1}}
+        </td>
+        <td>
+          {{l.email}}
+        </td>
+        <td>
+            {{l.title}}
+        </td>
+        <td>
+          <button (click)="requestAction(l.id, l.title, l.description);" class="waves-effect waves-light green btn">Approve/Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

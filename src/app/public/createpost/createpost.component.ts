@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../shared/user.service';
+import { UserService } from '../../shared/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { MatDialog, MatDialogConfig } from '@angular/material';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogComponent } from '../../dialog/dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -37,7 +37,10 @@ export class CreatepostComponent implements OnInit {
   };
     dialogConfig.data = {
         title: header,
-        msg: msg
+        msg: msg,
+        ok: 'CONFIRM',
+        cancel: 'CANCEL',
+        header: 'Thank You'
     };
 
     let dialogRef = this.dialog.open(DialogComponent, dialogConfig);
@@ -60,7 +63,9 @@ export class CreatepostComponent implements OnInit {
       this.openDialog(header,msg);
     },
   (err: HttpErrorResponse)=>{
-    
+    var header = 'Error in Job Posting!!';
+      var msg = 'Sorry, we are unable to post job at this time. Please try after sometime.';
+      this.openDialog(header,msg);
   })
   }
 

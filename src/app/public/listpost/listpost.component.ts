@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../shared/user.service';
+import { UserService } from '../../shared/user.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class ListpostComponent implements OnInit {
       this.isLoading = false;
       this.data = res.data;
     });
-    console.log(this.data);
+    
   }
 
 }

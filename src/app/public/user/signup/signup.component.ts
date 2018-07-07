@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from '../../shared/user.model';
+import { User } from '../../../shared/user.model';
 
-import { UserService } from '../../shared/user.service';
+import { UserService } from '../../../shared/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Globals } from '../../shared/global';
+import { Globals } from '../../../shared/global';
 
 @Component({
   selector: 'app-signup',
