@@ -13,6 +13,7 @@ import { ViewrequestComponent } from './admin/viewrequest/viewrequest.component'
 import { NewpostComponent } from './admin/newpost/newpost.component';
 import { PublicComponent } from './public/public.component';
 import { AdminauthGuard } from './admin/auth/adminauth.guard';
+import { ViewpostComponent } from './public/viewpost/viewpost.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
 		path: 'signup', component: PublicComponent,
 		children: [{path: '', component: UserComponent, 
 		children: [{path: '', component: LoginComponent}]}] 
+	},
+	{ 
+		path: 'viewpost/:id', component: PublicComponent,
+		children: [{path: '', component: ViewpostComponent}] 
 	},
 	{ 
 		path: 'post', component: PublicComponent , 

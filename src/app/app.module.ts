@@ -27,6 +27,8 @@ import { NewpostComponent } from './admin/newpost/newpost.component';
 import { AdminService } from './shared/admin.service';
 import { PublicComponent } from './public/public.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { PostService } from './shared/post.service';
+import { ViewpostComponent } from './public/viewpost/viewpost.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { DialogComponent } from './dialog/dialog.component';
     AdminComponent,
     ViewrequestComponent,
     NewpostComponent,
-    PublicComponent
+    PublicComponent,
+    ViewpostComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import { DialogComponent } from './dialog/dialog.component';
     ToasterModule.forRoot()
     
   ],
-  providers: [UserService,AuthGuard,Globals, ToasterService, AdminService],
+  providers: [UserService,AuthGuard,Globals, ToasterService, AdminService, PostService],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })

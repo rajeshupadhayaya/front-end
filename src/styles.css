@@ -51,12 +51,66 @@ header, main, footer {
 @media only screen and (max-width : 700px) {
     header, main, footer {
       padding-left: 0;
-    }
+		}
+		
+		.post-box{
+			width: 100%;
+		}
 }
+
+
 main > .container{
 	width: 100%;
 }
 
 .admin-content{
   padding-left: 10px;
+}
+
+.post-box{
+	width: 80% !important;
+	border: solid 0.5px;
+	border-color: lightgray;
+	box-shadow: 5px 5px #888888;
+	border-radius: 8px;
+	margin-bottom: 10px;
+}
+
+.description{
+	max-height: 200px;
+	overflow: hidden;
+	margin: 0 10px 0 10px;
+	word-wrap: break-word;
+}
+
+.request{
+	text-align: right;
+	padding: 15px;
+}
+
+.title{
+	text-transform: capitalize;
+	text-align: center;
+	padding: 20px;
+}
+
+.post-description{
+	margin: 0 20px 0 20px;
+	
+}
+
+.post-container{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border: solid 0.5px;
+	border-color: lightgray;
+	box-shadow: 5px 5px #888888;
+	border-radius: 8px;
+	height: 100%;
+	word-wrap: break-word;
+}
+
+hr{
+	margin: 10px 0 10px 0;
+	
 }

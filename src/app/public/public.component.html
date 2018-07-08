@@ -7,20 +7,14 @@
           <a routerLink="/" class="brand-logo">AVBIZ</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul *ngIf="!global.userLogin" class="hide-on-med-and-down right">
-            <!-- <li><a routerLink="/home">Home</a></li> -->
             <li ><a routerLink="/login" class="waves-effect waves-light btn">Login/Register</a></li>
-            
+
           </ul>
           <ul *ngIf="global.userLogin" class="hide-on-med-and-down right">
-            <!-- <li><a routerLink="/home">Home</a></li> -->
-            <!-- <li ><a routerLink="/login" class=""><i class="material-icons">account_box</i>Logout</a></li> -->
             <li >
-              <a class="dropdown-trigger" data-target='dropdown1'><i class="material-icons md-48 md-light">account_circle</i></a>
-              <ul id='dropdown1' class='dropdown-content'>
-                  <li><a (click)="Logout()">Logout</a></li>
-              </ul>
-
+              <i class="material-icons md-48 md-light">account_circle</i>
             </li>
+            <li><a (click)="Logout()">Logout</a></li>
             
           </ul>
         </div>
@@ -32,10 +26,8 @@
   <!-- <li><a routerLink="/">home</a></li> -->
   <li *ngIf="!global.userLogin"><a routerLink='/login'>Login/Register</a></li>
   <li *ngIf="global.userLogin">
-      <a class="dropdown-trigger" data-target='dropdown1'><i class="material-icons md-48 md-light">account_circle</i></a>
-    <ul id='dropdown1' class='dropdown-content'>
-        <li><a (click)="Logout()">Logout</a></li>
-    </ul>
+    <a (click)="Logout()"><i class="material-icons md-48 md-light">account_circle</i>Logout</a>
+    
   </li>
   
 </ul>

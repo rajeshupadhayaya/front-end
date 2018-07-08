@@ -14,7 +14,9 @@ import { DialogComponent } from '../../dialog/dialog.component';
 export class ViewpostComponent implements OnInit {
 
   id: any;
-  data: any;
+  data: [{
+    
+  }];
 
   constructor(
     private route: ActivatedRoute,
