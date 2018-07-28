@@ -5,7 +5,7 @@
 <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(email.value, password.value)">
     <div class="row">
       <div class="input-field col s12">
-        <input placeholder="Email" id="email" #email="ngModel" [(ngModel)]="user.email" type="email" required class="validate" [pattern]="emailPattern" name="email">
+        <input id="email" #email="ngModel" [(ngModel)]="user.email" type="email" required class="validate" [pattern]="emailPattern" name="email">
         <label [attr.data-error]="email.error!=null?(Email.error.required?'Email Required':'Invalid Email Id'):true" for="email">Email</label>
       </div>
       

@@ -34,18 +34,21 @@ export class UserService {
     }
 
     userLogout(){
-        return this.http.post(this.global.rootUrl+'api/logout',
+        var data = {
+            'logout':'logout'
+        }
+        return this.http.post(this.global.rootUrl+'/api/logout',data,
+        {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
+        
+    }
+
+    userValidate(){
+        return this.http.get(this.global.rootUrl+'/api/validateuser',
         {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
     }
 
     getAllPost(){
         return this.http.get(this.global.rootUrl+'/api/getpost');
-    }
-
-    getUserInfo(post){
-        var data ='id='+post;
-        return this.http.post(this.global.rootUrl+'api/postdetails',data,
-    {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
     }
     
     createPost(title, desc){

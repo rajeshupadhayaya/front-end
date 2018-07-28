@@ -13,8 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./createpost.component.css']
 })
 export class CreatepostComponent implements OnInit {
-  htmlContent = '';
-  // message = '';
+  htmlContent: any;
   
   constructor(
     private userService : UserService,
@@ -55,7 +54,6 @@ export class CreatepostComponent implements OnInit {
   }
 
   OnSubmit(title){
-    console.log(title);
     console.log(this.htmlContent);
     var desc = this.htmlContent;
     this.userService.createPost(title,desc).subscribe((data : any)=>{

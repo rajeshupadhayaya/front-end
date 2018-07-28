@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from './../shared/user.service';
 import { Globals } from './../shared/global';
 import {ToasterService} from 'angular2-toaster';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-public',
@@ -20,11 +21,13 @@ export class PublicComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.getItem('userToken')!=null){
-      
-      this.global.userLogin = true;
+      this.userService.userValidate().subscribe((res: any)=>{
+        this.global.userLogin = true;
+      },
+      (err: HttpErrorResponse)=>{
+        this.global.userLogin = false;
+      });
     }
-
-    
   }
 
   showSuccess() {
@@ -32,14 +35,13 @@ export class PublicComponent implements OnInit {
   }
 
   Logout(){
-    // console.log('logout');
-    this.userService.userLogout();
-    this.showSuccess();
-    localStorage.removeItem('userToken');
+    this.userService.userLogout().subscribe((res:  any)=>{
+      this.showSuccess();
+      localStorage.removeItem('userToken');
+      this.router.navigate(['/']);
+      this.global.userLogin = false;  
+    });
     
-    this.router.navigate(['/']);
-    this.global.userLogin = false;
-
   }
 
 

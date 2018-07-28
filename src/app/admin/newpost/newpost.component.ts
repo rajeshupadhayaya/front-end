@@ -30,7 +30,6 @@ export class NewpostComponent implements OnInit {
     this.adminService.getNewPost().subscribe((res: any)=>{
       this.isLoading = false;
       this.data = res.data;
-      console.log(this.data);
     });
   }
   
@@ -72,8 +71,6 @@ export class NewpostComponent implements OnInit {
         });
         this.getdata();
       }
-
-      // this.dialogResult = result;
       
       this.router.navigate(['/newpost']);
     });

@@ -43,7 +43,7 @@ export class AdminComponent implements OnInit {
   }
 
   OnSubmit(email,password){
-    console.log(email,password);
+    
     this.adminService.adminAuthentication(email,password).subscribe((data : any)=>{
       localStorage.setItem('adminToken',data.admin_Token);
       this.global.isAdmin = true;
@@ -53,7 +53,7 @@ export class AdminComponent implements OnInit {
   (err: HttpErrorResponse)=>{
     this.isLoginError = true;
     this.showLoginError();
-    // this.showError();
+    
   })
   }
 

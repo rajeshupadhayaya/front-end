@@ -3,6 +3,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material';
 import { DialogComponent } from '../../dialog/dialog.component';
 import { AdminService } from '../../shared/admin.service';
 import { Router } from '@angular/router';
+import { PostService } from '../../shared/post.service';
 
 @Component({
   selector: 'app-viewrequest',
@@ -20,6 +21,7 @@ export class ViewrequestComponent implements OnInit {
     public dialog: MatDialog,
     private adminService: AdminService,
     private router : Router,
+    private postservice: PostService,
   ) { }
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class ViewrequestComponent implements OnInit {
     this.adminService.getViewRequest().subscribe((res: any)=>{
       this.isLoading = false;
       this.data = res.data;
-      console.log(this.data);
+      
     });
   }
   
@@ -72,20 +74,17 @@ export class ViewrequestComponent implements OnInit {
         });
         this.getdata();
       }
-
-      // this.dialogResult = result;
-      
       this.router.navigate(['/viewrequest']);
     });
   }
 
   requestAction(request_id,post_id){
     // console.log(request_id,post_id);
-
-
-    var header = 'Post Details';
-
-    var msg = 'We have received your job, Your job will be visible to public after verification. You will also receive a mail for your job post approval/rejection. It may take 1-2 hour, Please be patience.';
-    this.openDialog(header,msg, request_id);
+    this.postservice.getPostDesc(post_id).subscribe((res: any)=>{
+      var data = res.data[0];
+      var header = data.title;
+      var msg = data.description;
+      this.openDialog(header,msg, request_id);
+    })
   }
 }

@@ -2,7 +2,7 @@
     <form class="col s12" #postForm="ngForm" (ngSubmit)="OnSubmit(posttitle.value)">
       <div class="row">
         <div class="input-field col s9">
-          <input placeholder="Title" id="posttitle" name="posttitle" #posttitle="ngModel" [(ngModel)]="posttitletext" type="text" class="validate">
+          <input id="posttitle" name="posttitle" #posttitle="ngModel" [(ngModel)]="posttitletext" type="text" class="validate">
           <label for="Title">Title</label>
         </div>
         <div class="input-fiedl col s3">
