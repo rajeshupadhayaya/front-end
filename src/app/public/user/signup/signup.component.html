@@ -18,7 +18,10 @@
       </div>
     </div>
     <div class="row">
-        <button [disabled]="!userRegistrationForm.valid" class="waves-effect blue waves-light btn-large" type="submit"> Register </button>
+      <div class="center terms-line">
+            By clicking Register, you agree to our Terms of Use and our Privacy Policy.
+      </div>
+      <button [disabled]="!userRegistrationForm.valid" class="waves-effect blue waves-light btn-large" type="submit"> Register </button>
     </div>
   </form>
       

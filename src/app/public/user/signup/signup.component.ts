@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
       email: email,
       password: password
     };
-    // console.log(this.user);
+    console.log(this.user);
     this.userService.registerUser(this.user).subscribe((data : any)=>{
       localStorage.setItem('userToken',data.access_token);
       // this.router.navigate(['/home']);

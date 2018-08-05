@@ -39,7 +39,7 @@ export class AdminComponent implements OnInit {
   }
   
   showLogoutSuccess() {
-    this.toasterService.pop('success', 'Logged In');
+    this.toasterService.pop('success', 'Logged Out');
   }
 
   OnSubmit(email,password){

@@ -1,0 +1,98 @@
+<!--<div class="container">-->
+  <div class="details-update">
+    
+  </div>
+
+  <form class="col s12 white" #updateForm="ngForm" (ngSubmit)="OnSubmit(user)">
+    
+    <div class="row">
+      <div class="input-field col s12">
+        
+        <input id="email" [(ngModel)]="user.email" name="email" type="email" style="text-transform:uppercase" readonly> 
+        <span *ngIf ="isVerified"><i class="material-icons prefix" style="color:green">check_circle</i></span>
+        <span *ngIf ="!isVerified"><i class="material-icons prefix" style="color:red">warning</i></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        
+        <input id="name" [(ngModel)]="user.name" name="name" type="text" required class="validate" style="text-transform:uppercase">
+        <!--<div [hidden]="Name.valid || Name.pristine" class="alert alert-danger"> Name is required</div>-->
+        <label data-error="Name Required" for="Name">Name</label>
+      </div>  
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s12">
+          
+        <input id="mobileno" type="number" [(ngModel)]="user.mobileno" required class="validate" name="mobileno" minlength="10" maxlength="12">
+        <label data-error="Mobile Number Required" for="password">Mobile Number</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        
+        <input id="address_1" [(ngModel)]="user.address_1" name="address_1" type="text" required class="validate" style="text-transform:uppercase">
+        <label data-error="Address 1 Required" for="Name">Address Line 1</label>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s12">
+        
+        <input id="address_2"  [(ngModel)]="user.address_2" name="address_2" type="text" required style="text-transform:uppercase">
+        <label for="Name">Address Line 2</label>
+      </div>  
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        
+        <input id="pincode" [(ngModel)]="user.pincode" name="pincode" type="text" required class="validate" style="text-transform:uppercase">
+        <label data-error="Pincode Required" for="Name">Pincode</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        
+        <input id="city" [(ngModel)]="user.city" name="city" type="text" required class="validate" style="text-transform:uppercase">
+        <label data-error="City Required" for="Name">City</label>
+      </div>
+      
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        
+        <input id="compname" [(ngModel)]="user.compname" name="compname" type="text" required class="validate" style="text-transform:uppercase">
+        <label data-error="Company Name Required" for="Name">Company Name</label>
+      </div>
+      
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <p> Gender </p>
+        <p>
+        <label>
+          <input id="gender" [(ngModel)]="user.gender" name="gender" type="radio" value="M" required class="validate" style="text-transform:uppercase"> <span>Male</span>
+        </label>
+        </p>
+        <p>
+        <label>
+          <input id="gender" [(ngModel)]="user.gender" name="gender" type="radio" value="F" required class="validate" style="text-transform:uppercase"> <span>Female</span>
+        </label>
+        </p>
+      </div>
+      
+    </div>
+    
+    <div class="row right">
+        <button [disabled]="!updateForm.valid" class="waves-effect waves-light blue btn-large" type="submit"> Update </button>
+    </div>
+
+</form>
+<!--</div>-->
