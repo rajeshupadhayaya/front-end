@@ -32,6 +32,11 @@ export class UserService {
         }
         return this.http.post(this.global.rootUrl+'/api/login',data);
     }
+    
+    socialLogin(user){
+        
+        return this.http.post(this.global.rootUrl+'/api/sociallogin',user);
+    }
 
     userLogout(){
         var data = {
@@ -44,6 +49,39 @@ export class UserService {
 
     userValidate(){
         return this.http.get(this.global.rootUrl+'/api/validateuser',
+        {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
+    }
+
+    generateVerifyEmail(){
+        var data={}
+        return this.http.post(this.global.rootUrl+'/api/generateverifyemailcode',data,
+        {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
+    }
+
+    resetPassword(email,authid){
+        var data={
+            'email':email,
+            'authid': authid
+        }
+        return this.http.post(this.global.rootUrl+'/api/forgotpassword',data)
+    }
+
+    verifyEmail(email,code){
+        var data ={
+            'email' : email,
+            'code' : code
+        }
+        return this.http.post(this.global.rootUrl+'/api/verifyEmail',data);
+
+    }
+
+    getDetails(){
+        return this.http.get(this.global.rootUrl+'/api/details',
+        {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
+    }
+    
+    updateDetails(user){
+        return this.http.post(this.global.rootUrl+'/api/updatedetails',user,
         {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})})
     }
 

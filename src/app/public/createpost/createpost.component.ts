@@ -54,7 +54,6 @@ export class CreatepostComponent implements OnInit {
   }
 
   OnSubmit(title){
-    console.log(this.htmlContent);
     var desc = this.htmlContent;
     this.userService.createPost(title,desc).subscribe((data : any)=>{
       // this.message = data.success;

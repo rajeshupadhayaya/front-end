@@ -1,3 +1,4 @@
+import { ConfirmmailComponent } from './public/confirmmail/confirmmail.component';
 import { ResetpasswordComponent } from './public/resetpassword/resetpassword.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -40,11 +41,15 @@ const routes: Routes = [
 		children: [{path: '', component: SignupComponent}]}] 
 	},
 	{ 
+		path: 'confirmmail/:email/:token', component: PublicComponent,
+		children: [{path: '', component: ConfirmmailComponent}] 
+	},
+	{ 
 		path: 'viewpost/:id', component: PublicComponent,
 		children: [{path: '', component: ViewpostComponent}] 
 	},
 	{ 
-		path: 'reset/:authid', component: PublicComponent,
+		path: 'reset/:email/:authid', component: PublicComponent,
 		children: [{path: '', component: ResetpasswordComponent}] 
 	},
 	{ 

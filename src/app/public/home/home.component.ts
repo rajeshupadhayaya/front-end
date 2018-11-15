@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../shared/post.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -8,24 +10,26 @@ import { PostService } from '../../shared/post.service';
 })
 export class HomeComponent implements OnInit {
 
-  inputval: any;
   searchdata: any;
-
-  constructor(
-    private postservice : PostService,
-  ) { }
-
-  ngOnInit() {
+  searchTerm : FormControl = new FormControl();
+  searchResult = [];
+  
+  constructor(private postservice : PostService) { 
+    this.searchTerm.valueChanges.pipe(debounceTime(500))
+    .subscribe(data =>{
+      this.postservice.search(data).subscribe((data:any)=>{
+        this.searchResult = data.data;
+        // var result = data.data;
+        // console.log(result);
+      });
+    })
   }
 
-  onKey(event: any){
-    
-    this.inputval = event.target.value;
-    if(this.inputval.length>=3){
-      this.postservice.search(this.inputval).subscribe((res:any)=>{
-        this.searchdata = res.data;
-      });
+  ngOnInit() {
     }
 
+
+  queryPage(query){
+    console.log(query.value);
   }
 }

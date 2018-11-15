@@ -6,11 +6,16 @@
   <form class="col s12 white" #updateForm="ngForm" (ngSubmit)="OnSubmit(user)">
     
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field col s9">
         
         <input id="email" [(ngModel)]="user.email" name="email" type="email" style="text-transform:uppercase" readonly> 
         <span *ngIf ="isVerified"><i class="material-icons prefix" style="color:green">check_circle</i></span>
-        <span *ngIf ="!isVerified"><i class="material-icons prefix" style="color:red">warning</i></span>
+        <!--<span *ngIf ="!isVerified"><i class="material-icons prefix" style="color:red">warning</i></span>-->
+        
+        
+      </div>
+      <div class="input-field col s3" *ngIf ="!isVerified">
+        <button class="waves-effect waves-light red btn-small" type="button" (click)="emailverify()"> Verify Email</button>
       </div>
     </div>
 
@@ -26,7 +31,7 @@
     <div class="row">
       <div class="input-field col s12">
           
-        <input id="mobileno" type="number" [(ngModel)]="user.mobileno" required class="validate" name="mobileno" minlength="10" maxlength="12">
+        <input id="phone_no" type="number" [(ngModel)]="user.phone_no" required class="validate" name="phone_no" minlength="10" maxlength="12">
         <label data-error="Mobile Number Required" for="password">Mobile Number</label>
       </div>
     </div>
@@ -42,7 +47,7 @@
     <div class="row">
       <div class="input-field col s12">
         
-        <input id="address_2"  [(ngModel)]="user.address_2" name="address_2" type="text" required style="text-transform:uppercase">
+        <input id="address_2"  [(ngModel)]="user.address_2" name="address_2" type="text" style="text-transform:uppercase">
         <label for="Name">Address Line 2</label>
       </div>  
     </div>
@@ -67,7 +72,7 @@
     <div class="row">
       <div class="input-field col s12">
         
-        <input id="compname" [(ngModel)]="user.compname" name="compname" type="text" required class="validate" style="text-transform:uppercase">
+        <input id="company_name" [(ngModel)]="user.company_name" name="company_name" type="text" required class="validate" style="text-transform:uppercase">
         <label data-error="Company Name Required" for="Name">Company Name</label>
       </div>
       

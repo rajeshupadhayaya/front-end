@@ -12,7 +12,8 @@
           </ul>
           <ul *ngIf="global.userLogin" class="hide-on-med-and-down right">
             <li >
-              <a routerLink="/profile"><i class="material-icons md-48 md-light">account_circle</i></a>
+              <a routerLink="/profile" *ngIf='!isProfilePic'><i class="material-icons md-48 md-light">account_circle</i></a>
+              <a routerLink="/profile" *ngIf='isProfilePic'><img src="{{user.image}}" alt="Profile" title="Profile" class="profile_pic_circle"></a>
             </li>
             <li><a (click)="Logout()">Logout</a></li>
             

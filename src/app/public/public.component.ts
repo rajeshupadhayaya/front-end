@@ -11,6 +11,8 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./public.component.css']
 })
 export class PublicComponent implements OnInit {
+  isProfilePic: boolean = false;
+  user:any;
 
   constructor(
     private userService : UserService,
@@ -23,11 +25,16 @@ export class PublicComponent implements OnInit {
     if(localStorage.getItem('userToken')!=null){
       this.userService.userValidate().subscribe((res: any)=>{
         this.global.userLogin = true;
+        this.user = JSON.parse(localStorage.getItem('userDetail'));
+        if(this.user.image != null && this.user.image != '' ){
+          this.isProfilePic = true;
+        }
       },
       (err: HttpErrorResponse)=>{
         this.global.userLogin = false;
       });
     }
+
   }
 
   showSuccess() {
@@ -38,6 +45,7 @@ export class PublicComponent implements OnInit {
     this.userService.userLogout().subscribe((res:  any)=>{
       this.showSuccess();
       localStorage.removeItem('userToken');
+      localStorage.removeItem('userDetail');
       this.router.navigate(['/']);
       this.global.userLogin = false;  
     });

@@ -1,8 +1,9 @@
+import { ConfirmmailComponent } from './public/confirmmail/confirmmail.component';
 import { ResetpasswordComponent } from './public/resetpassword/resetpassword.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { NgForm, FormsModule } from '@angular/forms';
+import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RoutesModule } from './routes.module';
@@ -19,7 +20,7 @@ import { Globals } from './shared/global';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import {MatDialogModule} from "@angular/material";
+import { MatAutocompleteModule, MatInputModule, MatDialogModule } from "@angular/material";
 import {ToasterModule, ToasterService} from 'angular2-toaster';
 import { AdminComponent } from './admin/admin.component';
 import { ViewrequestComponent } from './admin/viewrequest/viewrequest.component';
@@ -34,6 +35,25 @@ import { ForgotPasswordComponent  } from './public/forgot-password/forgot-passwo
 import { ChangepasswordComponent  } from './public/changepassword/changepassword.component';
 import { UpdatedetailComponent  } from './public/updatedetail/updatedetail.component';
 import { ViewappliedjobsComponent  } from './public/viewappliedjobs/viewappliedjobs.component';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider,} from "angular-6-social-login";
+
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("2017351708298423")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("252298833922-5me5lc333mq2kpbnibg8kodd5gbgdbv7.apps.googleusercontent.com")
+        }
+      ]);
+
+  return config;
+}
+
 
 @NgModule({
   declarations: [
@@ -56,22 +76,32 @@ import { ViewappliedjobsComponent  } from './public/viewappliedjobs/viewappliedj
     ChangepasswordComponent,
     UpdatedetailComponent,
     ViewappliedjobsComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    ConfirmmailComponent
   ],
   imports: [
     BrowserModule,
     RoutesModule,
     HttpClientModule,
     FormsModule,
+    MatInputModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
     AngularEditorModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
     BrowserAnimationsModule,
-    ToasterModule.forRoot()
+    ToasterModule.forRoot(),
+    SocialLoginModule
     
   ],
-  providers: [UserService,AuthGuard,Globals, ToasterService, AdminService, PostService],
+  providers: [UserService,AuthGuard,Globals, ToasterService, AdminService, PostService,
+      {
+          provide: AuthServiceConfig,
+          useFactory: getAuthServiceConfigs
+      }
+    ],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })
