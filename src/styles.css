@@ -15,16 +15,16 @@ h1 {
 	position: absolute;
 	background: url("/assets/images/loading.gif") no-repeat center;
     margin: auto;
-    left: 0; 
+    left: 0;
     right: 0;
     top: 0;
-    bottom: 0; 
+    bottom: 0;
 }
 
 * {
 	margin: 0;
 	padding: 0;
-	
+
 }
 
 body {
@@ -52,7 +52,7 @@ header, main, footer {
     header, main, footer {
       padding-left: 0;
 		}
-		
+
 		.post-box{
 			width: 100%;
 		}
@@ -71,7 +71,7 @@ main > .container{
 	width: 80% !important;
 	border: solid 0.5px;
 	border-color: lightgray;
-	box-shadow: 5px 5px #888888;
+	box-shadow: 2px 2px 10px #aaaaaa;
 	border-radius: 8px;
 	margin-bottom: 10px;
 }
@@ -96,7 +96,7 @@ main > .container{
 
 .post-description{
 	margin: 0 20px 0 20px;
-	
+
 }
 
 .post-container{
@@ -112,7 +112,7 @@ main > .container{
 
 hr{
 	margin: 10px 0 10px 0;
-	
+
 }
 
 
@@ -175,7 +175,7 @@ hr{
 .search_bar input[type=text]:not(.browser-default)
 {
     border-bottom: none;
-    
+
 }
 
 
