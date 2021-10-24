@@ -1,0 +1,12 @@
+.badge{
+float: left;
+font-size: 0.7rem;
+padding: 0
+}
+.badge .approved{
+  color: green
+}
+
+.badge .not-approved{
+  color: gray;
+}

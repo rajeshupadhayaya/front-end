@@ -1,56 +1,69 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Globals } from './global';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Globals } from "./global";
 
 @Injectable()
-
 export class AdminService {
-  
-  constructor(
-    private http: HttpClient,
-    private global: Globals,
-  ) { }
+  constructor(private http: HttpClient, private global: Globals) {}
 
-  adminAuthentication(email,password){
+  adminAuthentication(email, password) {
     var data = {
-        'email' : email,
-        'password': password
-    }
+      email: email,
+      password: password,
+    };
 
-    return this.http.post(this.global.rootUrl+'/api/admin/login',data);
+    return this.http.post(this.global.rootUrl + "/api/admin/login", data);
   }
 
-  adminLogout(){
-    return this.http.post(this.global.rootUrl+'api/admin/logout',
-    {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('adminToken')})})
+  adminLogout() {
+    return this.http.post(this.global.rootUrl + "api/admin/logout", {
+      headers: new HttpHeaders({
+        Authorization: "Bearer " + localStorage.getItem("adminToken"),
+      }),
+    });
   }
 
-  getNewPost(){
-    return this.http.get(this.global.rootUrl+'/api/admin/getpost',
-    {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('adminToken')})});
+  getNewPost() {
+    return this.http.get(this.global.rootUrl + "/api/admin/getpost", {
+      headers: new HttpHeaders({
+        Authorization: "Bearer " + localStorage.getItem("adminToken"),
+      }),
+    });
   }
 
-  getViewRequest(){
-    return this.http.get(this.global.rootUrl+'/api/admin/getviewrequest',
-    {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('adminToken')})});
+  getViewRequest() {
+    return this.http.get(this.global.rootUrl + "/api/admin/getviewrequest", {
+      headers: new HttpHeaders({
+        Authorization: "Bearer " + localStorage.getItem("adminToken"),
+      }),
+    });
   }
 
-  approvePost(post_id, status){
+  updatePost(post_id, status) {
     var data = {
-      'post_id' : post_id,
-      'status': status
-    }
-    return this.http.post(this.global.rootUrl+'/api/admin/approvepost',data,
-    {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('adminToken')})})
+      post_id: post_id,
+      status: status,
+    };
+    return this.http.post(this.global.rootUrl + "/api/admin/updatepost", data, {
+      headers: new HttpHeaders({
+        Authorization: "Bearer " + localStorage.getItem("adminToken"),
+      }),
+    });
   }
 
-  approveRequest(req_id, status){
+  approveRequest(req_id, status) {
     var data = {
-      'req_id' : req_id,
-      'status': status
-    }
-    return this.http.post(this.global.rootUrl+'/api/admin/approveviewrequest',data,
-    {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('adminToken')})})
-
+      req_id: req_id,
+      status: status,
+    };
+    return this.http.post(
+      this.global.rootUrl + "/api/admin/approveviewrequest",
+      data,
+      {
+        headers: new HttpHeaders({
+          Authorization: "Bearer " + localStorage.getItem("adminToken"),
+        }),
+      }
+    );
   }
 }

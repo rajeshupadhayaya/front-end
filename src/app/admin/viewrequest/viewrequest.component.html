@@ -6,17 +6,17 @@
               S.No
           </th>
           <th>
-              User Email
+            User Email
           </th>
         <th>
             User Name
         </th>
         <th>
-            Post Id
+            Post
         </th>
         <th>
             Action
-        </th>    
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -25,16 +25,16 @@
             {{ i + 1}}
         </td>
         <td>
-            {{l.email}}
+            {{l.user.email}}
         </td>
         <td>
-          {{l.name}}
+          {{l.user.name}}
         </td>
         <td>
-          {{l.post_id}}
+          {{l.post.title}}
         </td>
         <td>
-          <button (click)="requestAction(l.id,l.post_id);" class="waves-effect waves-light green btn">Approve/Reject</button>
+          <button (click)="openDialog(l.post,l.id);" class="waves-effect waves-light green btn">Approve/Reject</button>
         </td>
       </tr>
     </tbody>

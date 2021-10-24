@@ -9,9 +9,9 @@
         <input id="email" #email="ngModel" [(ngModel)]="user.email" name="email" type="email" required class="validate">
         <label data-error="Email Required" for="email">Email</label>
       </div>
-      
+
     </div>
-    
+
     <div class="row">
       <div class="input-field col s12">
           <i class="material-icons prefix">vpn_key</i>
@@ -25,20 +25,20 @@
           </div>
         <button [disabled]="!loginForm.valid" class="waves-effect waves-light blue btn-large" type="submit"> Login </button>
     </div>
-    
+
 </form>
 <div class=" right">
     <a routerLink="/forgotpassword">Forgot your password? </a>
   </div>
 
 <div class="col s12">
-  
+
   <hr>
-  
-  <div class="row">
+
+  <!-- <div class="row">
     <button (click)="socialSignIn('facebook')" class="waves-effect waves-light blue btn-large">Sign in with Facebook</button>
-  </div>
+  </div> -->
   <div class="row">
-    <button (click)="socialSignIn('google')" class="waves-effect waves-light blue btn-large">Sign in with Google</button> 
+    <button (click)="socialSignIn('google')" class="waves-effect waves-light blue btn-large">Sign in with Google</button>
   </div>
 </div>

@@ -1,19 +1,19 @@
 <div class="container post-container">
-  
+
   <div class="center title">
     {{data?.title}}
   </div>
 <hr>
   <div class="post-description">
       <span [innerHTML]="data?.description" ></span>
-      
+
   </div>
-  
+
   <hr>
   <div class="request">
       <span *ngIf="!global.userLogin">Please &nbsp; <button class="waves-effect waves-light btn-small" (click)="loginRedirect()">Login</button> &nbsp; to request for contact</span>
-      <span *ngIf="global.userLogin"><button (click)="requestContact(data.id)" class="waves-effect waves-light btn-large">Request Contact</button></span>
+      <span *ngIf="global.userLogin"><button (click)="requestContact()" class="waves-effect waves-light btn-large">Request Contact</button></span>
   </div>
 
-  
+
 </div>

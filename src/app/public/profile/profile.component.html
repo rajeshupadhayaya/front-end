@@ -2,26 +2,27 @@
 
   <div class="row">
     <div class="col s4 profile-menu">
-      <div class="user-img">
-        <!--<img src="assets/images/default-profile-pic.png">-->
-        <img src="{{user.image}}">
-      </div>
-      
-      <ul>
-        <li><div class="divider"></div></li>
-        
-        <li><a routerLink="/userdetail" class="waves-effect">Update Details</a></li>
-        <li><a routerLink="/changepassword" class="waves-effect">Change Password</a></li>
-        <!--<li><a routerLink="/appliedjobs" class="waves-effect">View Applied Jobs</a></li>-->
+
+      <ul class="menu">
+        <li>
+          <div class="user-img">
+            <!--<img src="assets/images/default-profile-pic.png">-->
+            <img src="{{user.image}}">
+          </div>
+        </li>
+
+        <li routerLink="/my-jobs" class="menu-item waves-effect">My Post</li>
+        <li routerLink="/userdetail" class="menu-item waves-effect">Update Details</li>
+        <li routerLink="/changepassword" class="menu-item waves-effect">Change Password</li>
       </ul>
 
     </div>
 
     <div class="col s8 profile-content">
-      <!--<main>-->
+
         <router-outlet></router-outlet>
-      <!--</main>   -->
+
     </div>
   </div>
-  
+
 </div>

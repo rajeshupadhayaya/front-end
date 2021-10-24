@@ -26,7 +26,8 @@ export class PublicComponent implements OnInit {
       this.userService.userValidate().subscribe(
         (res: any) => {
           this.global.userLogin = true;
-          this.user = JSON.parse(localStorage.getItem("userDetail"));
+          this.user = res.user;
+          localStorage.setItem("userDetail", JSON.stringify(this.user));
           if (this.user.image != null && this.user.image != "") {
             this.isProfilePic = true;
           }
